@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import log from "../assets/log.png"
-import { Bell, Menu, Mic, Search, Upload, User } from 'lucide-react'
+import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from 'lucide-react'
 import { Button } from '../components/Button'
 
 function PageHeader() {
@@ -16,7 +16,12 @@ function PageHeader() {
                 <img src={log} alt=""  className='h-8'/>
             </a>
         </div>
-        <form className={`md:flex gap-4 flex-grow justify-center ${showFullSearch? "flex": "hidden"}`}>
+        <form className={`gap-4 flex-grow justify-center ${showFullSearch? "flex": "hidden md:flex "}`}>
+        {showFullSearch && (
+          <Button onClick={() => setFullSearch(false)} type='button' size='icon'  variant="ghost" className='flex-shrink-0'>
+            <ArrowLeft/>
+          </Button>
+        )}
           <div className='flex flex-grow max-w-[600px]'>
             <input type='search' placeholder='Search'
              className='rounded-l-full border border-secondary-border shadow-inner shadow-secondary py-1 px-4 text-lg w-full
